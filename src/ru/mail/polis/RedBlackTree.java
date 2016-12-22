@@ -35,8 +35,6 @@ public class RedBlackTree<E extends Comparable<E>> implements ISortedSet<E> {
         System.out.println(tree.inorderTraverse());
         System.out.println(tree.size);
         System.out.println(tree);
-        System.out.println(tree.first());
-        System.out.println(tree.last());
         tree.remove(10);
         tree.remove(15);
         System.out.println(tree.size);
@@ -119,12 +117,13 @@ public class RedBlackTree<E extends Comparable<E>> implements ISortedSet<E> {
 
     @Override
     public boolean contains(E value) {
+
         if (value == null) {
             throw new NullPointerException("value is null");
         }
-        if (root != null) {
+        if (root != null && root!=nil) {
             Node curr = root;
-            while (curr != null) {
+            while (curr != null && curr!=nil) {
                 int cmp = compare(curr.val, value);
                 if (cmp == 0) {
                     return true;
@@ -140,9 +139,11 @@ public class RedBlackTree<E extends Comparable<E>> implements ISortedSet<E> {
 
     @Override
     public boolean add(E value) {
+
         if (value == null) {
             throw new NullPointerException("value is null");
         }
+        if (contains(value)) return false;
         root = add(root, value);
         root.color = BLACK;
         size++;
@@ -182,6 +183,10 @@ public class RedBlackTree<E extends Comparable<E>> implements ISortedSet<E> {
 
     @Override
     public boolean remove(E value) {
+       if (value == null) {
+            throw new NullPointerException("value is null");
+        }
+
         Node current=root;
         while (current!=nil){
             int cmp=value.compareTo(current.val);
@@ -192,7 +197,6 @@ public class RedBlackTree<E extends Comparable<E>> implements ISortedSet<E> {
             }
             else current=(cmp<0)? current.left:current.right;
         }
-        size--;
         return false;
     }
 
