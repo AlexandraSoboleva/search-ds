@@ -135,6 +135,7 @@ public class AVLTree<E extends Comparable<E>> implements ISortedSet<E> {
 
     @Override
     public boolean add(E value) {
+        if (contains(value)) return false;
         if (root == null) root = new Node(value);
         else add(root, value);
         size++;
@@ -151,6 +152,7 @@ public class AVLTree<E extends Comparable<E>> implements ISortedSet<E> {
 
     @Override
     public boolean remove(E value) {
+        if (!contains(value)) return false;
         if (value == null) {
             throw new NullPointerException("value is null");
         }
