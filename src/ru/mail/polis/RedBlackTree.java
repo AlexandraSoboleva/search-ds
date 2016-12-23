@@ -153,7 +153,7 @@ public class RedBlackTree<E extends Comparable<E>> implements ISortedSet<E> {
     private Node add(Node node, E value) {
         if (node == nil || node==null) return new Node(RED,value);
 
-        int cmp = value.compareTo(node.val);
+        int cmp = compare(value, node.val);
         if (cmp < 0) node.left = add(node.left, value);
         else if (cmp > 0) node.right = add(node.right, value);
 
@@ -189,7 +189,7 @@ public class RedBlackTree<E extends Comparable<E>> implements ISortedSet<E> {
 
         Node current=root;
         while (current!=nil){
-            int cmp=value.compareTo(current.val);
+            int cmp=compare(value, current.val);
             if (cmp==0) {
                 removeNode(current);
                 size--;

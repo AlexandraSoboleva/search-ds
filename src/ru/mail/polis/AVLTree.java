@@ -147,7 +147,7 @@ public class AVLTree<E extends Comparable<E>> implements ISortedSet<E> {
 
     private Node add(Node node, E value) {
         if (node == null) return new Node(value);
-        int cmp = value.compareTo(node.val);
+        int cmp = compare(value, node.val);
         if (cmp < 0) node.left = add(node.left, value);
         else node.right = add(node.right, value);
         return balance(node);
@@ -170,7 +170,7 @@ public class AVLTree<E extends Comparable<E>> implements ISortedSet<E> {
 
     private Node remove(Node node, E value) {
         if (node == null) return null;
-        int cmp = value.compareTo(node.val);
+        int cmp = compare(value, node.val);
         if (cmp < 0) node.left = remove(node.left, value);
         else if (cmp > 0) node.right = remove(node.right, value);
         else {
