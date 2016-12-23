@@ -139,7 +139,7 @@ public class AVLTree<E extends Comparable<E>> implements ISortedSet<E> {
         if (root == null) root = new Node(value);
         else {
             if (contains(value)) return false;
-            add(root, value);
+          root=  add(root, value);
         }
         size++;
         return true;

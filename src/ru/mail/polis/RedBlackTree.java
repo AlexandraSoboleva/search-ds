@@ -28,7 +28,7 @@ public class RedBlackTree<E extends Comparable<E>> implements ISortedSet<E> {
     }
 
     public static void main(String[] args) {
-        RedBlackTree<Integer> tree = new RedBlackTree<>();
+       RedBlackTree<Integer> tree = new RedBlackTree<>();
         tree.add(10);
         tree.add(5);
         tree.add(15);
@@ -191,7 +191,7 @@ public class RedBlackTree<E extends Comparable<E>> implements ISortedSet<E> {
         while (current!=nil){
             int cmp=compare(value, current.val);
             if (cmp==0) {
-                removeNode(current);
+               removeNode(current);
                 size--;
                 return true;
             }
